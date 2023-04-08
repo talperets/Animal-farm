@@ -23,17 +23,20 @@ function useAnimalSearch() {
 
 function App() {
 const {search, animals} =useAnimalSearch()
-
+const [prompt, setPrompt] = useState()
   return (
     <main>
-      <h1>Company Farm</h1>
+      <h1>Animal Farm</h1>
+      <h3>Last search: {localStorage.getItem('lastquery')}</h3>
       <input
         type="text"
-        placeholder="Search"
-        value={localStorage.getItem('lastquery')}
-        onChange={(e) => search(e.target.value)}
+        placeholder='Search'
+        
+        onChange={(e) => setPrompt(e.target.value)}
       />
+      <button onClick={()=>search(prompt)}>Search</button>
       <ul>
+        
         {animals.map((animal) => (
           <Animal key={animal.id} {...animal} />
         ))}

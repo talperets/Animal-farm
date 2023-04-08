@@ -8,9 +8,9 @@ const chance = Chance();
 const animals = [...Array(600).keys()].map((id) => {
   return {
     id,
-    type: chance.city(),
+    type: chance.animal(),
     age: chance.age(),
-    name: chance.company(),
+    name: chance.name(),
     address: chance.address(),
   };
 });
